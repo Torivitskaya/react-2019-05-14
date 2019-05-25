@@ -4,7 +4,6 @@ import RestaurantMenu from "./restaurant-menu";
 class Restaurant extends PureComponent {
   render() {
     const { image, name, menu, isMenuOpen } = this.props;
-
     return (
       <div>
         <img src={image} width={64} height={64} alt={name} />
@@ -18,7 +17,8 @@ class Restaurant extends PureComponent {
   }
 
   handleToggleOpenClick = () => {
-    this.props.toggleOpenMenu(this.props.id);
+    const { id, toggleOpenMenu } = this.props;
+    this.props.isMenuOpen ? toggleOpenMenu(null) : toggleOpenMenu(id);
   };
 }
 
